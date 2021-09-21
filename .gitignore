@@ -13,6 +13,7 @@
 /wppconnect-server.njsproj.user
 *.sln
 /package-lock.json
+/yarn.lock
 *.png
 *.tgz
 /.idea

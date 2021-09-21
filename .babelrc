@@ -1,12 +1,4 @@
 {
-  "plugins": [
-    [
-      "@babel/plugin-transform-runtime",
-      {
-        "regenerator": true
-      }
-    ]
-  ],
   "presets": [
     [
       "@babel/preset-env",
@@ -20,7 +12,15 @@
   "env": {
     "development": {
       "sourceMaps": "inline",
-      "retainLines": true
+      "retainLines": true,
+      "plugins": [
+        [
+          "@babel/plugin-transform-runtime",
+          {
+            "regenerator": true
+          }
+        ]
+      ]
     }
   }
 }

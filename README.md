@@ -1,4 +1,5 @@
 # WPPConnect Team
+
 access our documentation on [postman](https://documenter.getpostman.com/view/9139457/TzshF4jQ)
 
 ## _WPPConnect Server_
@@ -20,17 +21,17 @@ Wppconnect Server is a ready-to-use API, just download, install, and start using
 
 ## Features
 
-|                                                            |     |
-| ---------------------------------------------------------- | --- |
-| Multiple Sessions                                          | ✔ |
-| Send **text, image, video and docs**                | ✔ |
-| Get **contacts list** | ✔   |
-| Receive messages                                            | ✔ |
-| Open/Close Session                                        | ✔|
-| Change Profile/Username                                         | ✔   |
-| Create Group                                         | ✔ | 
-| Join Group by Invite Code                                         | ✔ | 
-| Webhook                                         | ✔ |
+|                                      |     |
+| ------------------------------------ | --- |
+| Multiple Sessions                    | ✔   |
+| Send **text, image, video and docs** | ✔   |
+| Get **contacts list**                | ✔   |
+| Receive messages                     | ✔   |
+| Open/Close Session                   | ✔   |
+| Change Profile/Username              | ✔   |
+| Create Group                         | ✔   |
+| Join Group by Invite Code            | ✔   |
+| Webhook                              | ✔   |
 
 ## Libraries Used
 
@@ -54,58 +55,29 @@ npm install
 ```
 
 ## Run Server
+
 ```sh
 yarn dev
 ```
 
 ## Build Server
+
 ```sh
 yarn build
 ```
 
-------
+---
 
 # Configuration
 
-This server use config.json file to define some options, default values are:
+This server use `config.js` file to set some default options. Copy the `.example.env` file content to a new file named
+`.env` before start.
 
-```javascript
-{
-  /* secret key to genereta access token */
-  "secretKey": "THISISMYSECURETOKEN", 
-  "host": "http://localhost",
-  "port": "21465",
-  // starts all sessions when starting the server.
-  "startAllSession": true,
-  "webhook": {
-    "url": null,
-    // automatically downloads files to upload to the webhook
-    "autoDownload": true,
-    //marks messages as read when the webhook returns ok
-    "readMessage": false,
-    //sends all unread messages to the webhook when the server starts
-    "allUnreadOnStart": true
-  },
-  //functionality that archives conversations, runs when the server starts
-  "archive": {
-    "enable": true,
-    //maximum interval between filings.
-    "waitTime": 10,
-    "daysToArchive": 45
-  },
-  "log": {
-    "level": "error",
-    "logger": [ "console", "file" ]
-  }, 
-  "createOptions": {
-    "browserArgs": ["--no-sandbox"]
-  }
-}
-```
+> The `.env` file will be ignored by git automatically
 
 # Secret Key
 
-Your `secretKey` is inside the `config.json` file. You must change the default value to one that only you know.
+Your `SECRET_KEY` is inside the `.env` file. You must change the default value to one that only you know.
 
 <!-- ![Peek 2021-03-25 09-33](https://user-images.githubusercontent.com/40338524/112473515-3b310a80-8d4d-11eb-94bb-ff409c91d9b8.gif) -->
 
@@ -173,4 +145,5 @@ curl -X POST --location "http://localhost:21465/api/mySession/send-message" \
 See the `routes file` for all the routes. [here](/src/routes/index.js) and HTTP [file](/requests.http).
 
 # Swagger UI
-Swagger ui can be found at  `/api-docs`
+
+Swagger ui can be found at `/api-docs`

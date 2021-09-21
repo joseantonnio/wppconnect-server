@@ -10,8 +10,8 @@
       "url": "http://localhost:21465/api/{session}",
       "variables": {
         "session": {
-          "default": "NERDWHATS_AMERICA",
-          "description": "(Required) nome da sessão"
+          "default": "default",
+          "description": "(Required) Session Name"
         }
       }
     }
@@ -22,13 +22,13 @@
         "tags": [
           "Auth"
         ],
-        "summary": "generate-token (Gera token Bearer para sessão)",
-        "operationId": "generate-token(GeratokenBearerparasessão)",
+        "summary": "Generate Bearer Token",
+        "operationId": "generate-token",
         "parameters": [
           {
             "name": "secretkey",
             "in": "path",
-            "description": "(Required) chave do admin",
+            "description": "(Required) Secret Key",
             "required": true,
             "style": "simple",
             "schema": {
@@ -44,7 +44,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/resultadocomsucessodacria%C3%A7%C3%A3odotoken"
+                  "$ref": "#/components/schemas/GenerateSession"
                 },
                 "example": {
                   "status": "Success",
@@ -64,16 +64,16 @@
         "tags": [
           "Auth"
         ],
-        "summary": "start-session (Retorna QRCode de login)",
-        "description": "Inicializa a sessão",
-        "operationId": "start-session(RetornaQRCodedelogin)",
+        "summary": "Start Session",
+        "description": "Start a new session or check status",
+        "operationId": "start-session",
         "parameters": [],
         "requestBody": {
           "description": "",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/start-session%28RetornaQRCodedelogin%29Request"
+                "$ref": "#/components/schemas/StartSession"
               },
               "example": {
                 "webhook": "https://webhook.site/7cc2944d-3967-4cea-988c-d57ea80bce5f"
@@ -97,9 +97,9 @@
         "tags": [
           "Auth"
         ],
-        "summary": "status-session (Atualiza QRCode de login)",
-        "description": "Retorna o status da session",
-        "operationId": "status-session(AtualizaQRCodedelogin)",
+        "summary": "Check Session Status",
+        "description": "Return the status of a session",
+        "operationId": "status-session",
         "parameters": [],
         "responses": {
           "200": {
@@ -116,9 +116,9 @@
         "tags": [
           "Auth"
         ],
-        "summary": "qrcode-session (Pegar qrCode de autenticação via stream)",
-        "description": "Retorna o status da session",
-        "operationId": "qrcode-session(PegarqrCodedeautenticaçãoviastream)",
+        "summary": "Stream Session Authentication QRCode",
+        "description": "Return session QRCode image",
+        "operationId": "qrcode-session",
         "parameters": [],
         "responses": {
           "200": {
@@ -135,8 +135,8 @@
         "tags": [
           "Auth"
         ],
-        "summary": "check-connection-session (status da conexão)",
-        "description": "Verifica se a sessáo esta conectada",
+        "summary": "Connection Status",
+        "description": "Checks if session still connected",
         "operationId": "check-connection-session(statusdaconexão)",
         "parameters": [],
         "responses": {
@@ -154,8 +154,8 @@
         "tags": [
           "Auth"
         ],
-        "summary": "close-session",
-        "description": "finaliza a sessão",
+        "summary": "Close Session",
+        "description": "End the current session",
         "operationId": "close-session",
         "parameters": [],
         "responses": {
@@ -9002,8 +9002,8 @@
   },
   "components": {
     "schemas": {
-      "resultadocomsucessodacriaçãodotoken": {
-        "title": "resultadocomsucessodacriaçãodotoken",
+      "GenerateSession": {
+        "title": "GenerateSession",
         "required": [
           "status",
           "session",
@@ -9032,8 +9032,8 @@
           "full": "nova:$2b$10$N9xrdqCW4S1jpNyB44L1nuXj79EAvo83MS6uxhBg8JOvWNLV8QlaS"
         }
       },
-      "start-session(RetornaQRCodedelogin)Request": {
-        "title": "start-session(RetornaQRCodedelogin)Request",
+      "StartSession": {
+        "title": "StartSession",
         "required": [
           "webhook"
         ],
@@ -11315,8 +11315,8 @@
           "response": false
         }
       },
-      "AllChatsWhitMessages": {
-        "title": "AllChatsWhitMessages",
+      "AllChatsWithMessages": {
+        "title": "AllChatsWithMessages",
         "required": [
           "status",
           "response"

@@ -226,8 +226,10 @@ routes.get('/api/:session/get-order-by-messageId', verifyToken, statusConnection
 routes.post('/api/:session/chatwoot', DeviceController.chatWoot);
 
 // Api Doc
-routes.use('/api-docs', swaggerUi.serve);
-routes.get('/api-docs', swaggerUi.setup(swaggerDocument));
+if (process.env.ENABLE_SWAGGER) {
+  routes.use('/api-docs', swaggerUi.serve);
+  routes.get('/api-docs', swaggerUi.setup(swaggerDocument));
+}
 
 //k8s
 routes.get('/healthz', HealthCheck.healthz);

@@ -1,4 +1,4 @@
-import config from '../../../config.json';
+import config from '../../../config';
 
 let mongoose = config.tokenStoreType === 'mongodb' ? require('../../db/mongodb/db') : null;
 let Token = null;
